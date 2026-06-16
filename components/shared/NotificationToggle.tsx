@@ -25,6 +25,9 @@ async function registerServiceWorker(): Promise<ServiceWorkerRegistration> {
 }
 
 async function subscribeToPush(): Promise<PushSubscription> {
+  const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+  if (!vapidKey) throw new Error("VAPID public key not configured");
+
   // Always wait for the SW to be fully ready before subscribing
   await registerServiceWorker();
   const reg = await navigator.serviceWorker.ready;
@@ -33,13 +36,11 @@ async function subscribeToPush(): Promise<PushSubscription> {
 
   return reg.pushManager.subscribe({
     userVisibleOnly: true,
-    applicationServerKey: urlBase64ToUint8Array(
-      process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!
-    ),
+    applicationServerKey: urlBase64ToUint8Array(vapidKey) as unknown as BufferSource,
   });
 }
 
-function urlBase64ToUint8Array(base64String: string): ArrayBuffer {
+function urlBase64ToUint8Array(base64String: string): Uint8Array {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
   const rawData = window.atob(base64);
@@ -47,7 +48,7 @@ function urlBase64ToUint8Array(base64String: string): ArrayBuffer {
   for (let i = 0; i < rawData.length; ++i) {
     outputArray[i] = rawData.charCodeAt(i);
   }
-  return outputArray.buffer;
+  return outputArray;
 }
 
 export function NotificationToggle() {
@@ -119,8 +120,9 @@ export function NotificationToggle() {
         toast.success("Daily reminders enabled! You'll be notified at 8:30 AM 🔔");
       }
     } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong");
+      console.error("Push subscription error:", err);
+      const msg = err instanceof Error ? err.message : String(err);
+      toast.error(`Failed: ${msg}`);
     } finally {
       setLoading(false);
     }

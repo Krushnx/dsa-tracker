@@ -12,6 +12,7 @@ import {
   Code2,
   Layers,
   Building2,
+  Users,
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -19,6 +20,7 @@ const NAV_ITEMS = [
   { label: "Problems", href: "/problems", icon: BookOpen },
   { label: "Collections", href: "/collections", icon: Layers },
   { label: "Companies", href: "/companies", icon: Building2 },
+  { label: "DSA Buddy", href: "/buddy", icon: Users },
   { label: "My Progress", href: "/progress", icon: TrendingUp },
   { label: "Goals", href: "/goals", icon: Target },
   { label: "Profile", href: "/profile", icon: User },

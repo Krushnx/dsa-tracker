@@ -105,6 +105,7 @@ export interface IUserSettings {
   dailyGoal: number;
   timezone: string;
   emailNotifications: boolean;
+  pinnedCompanies: string[];
   createdAt: Date;
   updatedAt: Date;
 }

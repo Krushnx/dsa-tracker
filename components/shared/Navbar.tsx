@@ -7,8 +7,9 @@ import { signOut, useSession } from "next-auth/react";
 import { cn } from "@/lib/utils";
 import {
   Search, Menu, X, LogOut, User, Code2,
-  LayoutDashboard, BookOpen, TrendingUp, Target, Layers,
+  LayoutDashboard, BookOpen, TrendingUp, Target, Layers, Building2,
 } from "lucide-react";
+import { NotificationToggle } from "@/components/shared/NotificationToggle";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,6 +24,7 @@ const NAV_ITEMS = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { label: "Problems", href: "/problems", icon: BookOpen },
   { label: "Collections", href: "/collections", icon: Layers },
+  { label: "Companies", href: "/companies", icon: Building2 },
   { label: "My Progress", href: "/progress", icon: TrendingUp },
   { label: "Goals", href: "/goals", icon: Target },
   { label: "Profile", href: "/profile", icon: User },
@@ -112,6 +114,7 @@ export function Navbar() {
       </div>
 
       <div className="ml-auto flex items-center gap-3">
+        <NotificationToggle />
         {/* User menu */}
         <DropdownMenu>
           <DropdownMenuTrigger>

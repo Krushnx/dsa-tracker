@@ -7,31 +7,15 @@ const UserSettingsSchema = new Schema<IUserSettings>(
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
-      unique: true, // one settings doc per user
+      unique: true,
     },
-    theme: {
-      type: String,
-      enum: ["dark", "light", "system"],
-      default: "dark",
-    },
-    dailyGoal: {
-      type: Number,
-      default: 2,
-      min: 1,
-      max: 20,
-    },
-    timezone: {
-      type: String,
-      default: "UTC",
-    },
-    emailNotifications: {
-      type: Boolean,
-      default: false,
-    },
+    theme: { type: String, enum: ["dark", "light", "system"], default: "dark" },
+    dailyGoal: { type: Number, default: 2, min: 1, max: 20 },
+    timezone: { type: String, default: "UTC" },
+    emailNotifications: { type: Boolean, default: false },
+    pinnedCompanies: { type: [String], default: [] },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 // userId unique:true on field already creates the index — no duplicate needed

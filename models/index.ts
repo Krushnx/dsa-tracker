@@ -5,3 +5,4 @@ export { default as Goal } from "./Goal";
 export { default as Streak } from "./Streak";
 export { default as Activity } from "./Activity";
 export { default as UserSettings } from "./UserSettings";
+export { default as CompanyProblem } from "./CompanyProblem";

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { cn } from "@/lib/utils";
 import {
-  Search, Menu, X, LogOut, User, Code2,
+  Search, Menu, X, LogOut, User, Users,Code2,
   LayoutDashboard, BookOpen, TrendingUp, Target, Layers, Building2,
 } from "lucide-react";
 import { NotificationToggle } from "@/components/shared/NotificationToggle";
@@ -21,10 +21,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const NAV_ITEMS = [
-  { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+ { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { label: "Problems", href: "/problems", icon: BookOpen },
   { label: "Collections", href: "/collections", icon: Layers },
   { label: "Companies", href: "/companies", icon: Building2 },
+  { label: "DSA Buddy", href: "/buddy", icon: Users },
   { label: "My Progress", href: "/progress", icon: TrendingUp },
   { label: "Goals", href: "/goals", icon: Target },
   { label: "Profile", href: "/profile", icon: User },

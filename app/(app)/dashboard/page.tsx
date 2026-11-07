@@ -12,6 +12,7 @@ import { RecentActivity } from "@/components/dashboard/RecentActivity";
 import { RecommendedProblems } from "@/components/dashboard/RecommendedProblems";
 import { GoalProgress } from "@/components/dashboard/GoalProgress";
 import { AnalyticsCharts } from "@/components/dashboard/AnalyticsCharts";
+import { LeetCodeSyncSection } from "@/components/dashboard/LeetCodeSyncSection";
 
 export const metadata = {
   title: "Dashboard — DSA Tracker",
@@ -69,6 +70,9 @@ export default async function DashboardPage() {
         <RecentActivity activities={activities} />
         <RecommendedProblems problems={recommended} />
       </div>
+
+      {/* LeetCode Stats Sync */}
+      <LeetCodeSyncSection />
 
       {/* Analytics */}
       <AnalyticsCharts />

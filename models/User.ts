@@ -37,6 +37,16 @@ const UserSchema = new Schema<IUser>(
       enum: ["USER", "ADMIN"],
       default: "USER",
     },
+    leetcodeUsername: {
+      type: String,
+      trim: true,
+      sparse: true,
+      match: /^[a-zA-Z0-9_-]{1,39}$/,
+    },
+    leetcodeSyncEnabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
@@ -45,6 +55,7 @@ const UserSchema = new Schema<IUser>(
 
 // Remove the duplicate index call — unique:true on the field already creates the index
 UserSchema.index({ role: 1 });
+UserSchema.index({ leetcodeUsername: 1 }, { sparse: true });
 
 const User: Model<IUser> =
   mongoose.models.User ?? mongoose.model<IUser>("User", UserSchema);

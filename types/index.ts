@@ -30,6 +30,8 @@ export interface IUser {
   provider: AuthProvider;
   emailVerified: boolean;
   role: UserRole;
+  leetcodeUsername?: string;
+  leetcodeSyncEnabled: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -62,6 +64,7 @@ export interface IUserProblem {
   firstAttemptedAt?: Date;
   lastReviewedAt?: Date;
   revisionCount: number;
+  source?: "MANUAL" | "LEETCODE_SYNC";
   createdAt: Date;
   updatedAt: Date;
 }
@@ -106,6 +109,28 @@ export interface IUserSettings {
   timezone: string;
   emailNotifications: boolean;
   pinnedCompanies: string[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface ILeetCodeSync {
+  _id: Types.ObjectId;
+  userId: Types.ObjectId;
+  status: "IN_PROGRESS" | "COMPLETED" | "FAILED";
+  startedAt: Date;
+  completedAt?: Date;
+  stats?: {
+    total: number;
+    easy: number;
+    medium: number;
+    hard: number;
+  };
+  newlySolvedCount?: number;
+  error?: {
+    stage: "FETCH_STATS" | "FETCH_SUBMISSIONS" | "CROSS_REFERENCE" | "PERSIST";
+    reason: "TIMEOUT" | "HTTP_ERROR" | "INVALID_RESPONSE" | "DB_ERROR" | "NETWORK_ERROR";
+    detail?: string;
+  };
   createdAt: Date;
   updatedAt: Date;
 }

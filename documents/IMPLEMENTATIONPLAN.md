@@ -702,28 +702,6 @@ Feels polished and professional.
 
 ---
 
-# Phase 20 — Post-MVP Features
-
-## V2
-
-* Google Login
-* Public Profiles
-* Leaderboards
-* Revision Planner
-* Achievement System
-* Email Notifications
-
----
-
-## V3
-
-* LeetCode Sync
-* Contest Tracking
-* AI Recommendations
-* Team Plans
-* Paid Subscriptions
-
----
 
 # Recommended Development Order
 

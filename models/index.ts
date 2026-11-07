@@ -7,3 +7,4 @@ export { default as Activity } from "./Activity";
 export { default as UserSettings } from "./UserSettings";
 export { default as CompanyProblem } from "./CompanyProblem";
 export { default as BuddyRequest } from "./BuddyRequest";
+export { default as LeetCodeSync } from "./LeetCodeSync";

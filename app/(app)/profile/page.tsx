@@ -5,6 +5,7 @@ import { getUserObjectId } from "@/lib/db/getUserObjectId";
 import { getProgressSummary } from "@/lib/services/progress.service";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { ProfileClient } from "@/components/profile/ProfileClient";
+import { LeetCodeSettingsSection } from "@/components/profile/LeetCodeSettingsSection";
 
 export const metadata = { title: "Profile — DSA Tracker" };
 
@@ -37,6 +38,9 @@ export default async function ProfilePage() {
         }}
         stats={{ solved: summary.solved, attempted: summary.attempted, todo: summary.todo }}
       />
+      <div className="mt-6">
+        <LeetCodeSettingsSection />
+      </div>
     </div>
   );
 }

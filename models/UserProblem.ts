@@ -39,6 +39,11 @@ const UserProblemSchema = new Schema<IUserProblem>(
       type: Number,
       default: 0,
     },
+    source: {
+      type: String,
+      enum: ["MANUAL", "LEETCODE_SYNC"],
+      // No default — undefined for records predating this feature
+    },
   },
   {
     timestamps: true,
